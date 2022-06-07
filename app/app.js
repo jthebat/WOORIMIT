@@ -23,6 +23,7 @@ const app = express();
 
 //라우팅
 const home = require("./src/routes/home");
+app.use(express.static(`${__dirname}/src/public`));
 
 //앱 세팅
 app.set("views","./src/views");
