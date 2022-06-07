@@ -12,6 +12,16 @@ function login(){
         id: id.value,
         paword: psword.value,
     };
-    console.log(req);
+    //console.log(req);
+console.log(req);
+console.log(JSON.stringify(req));  //위와 출력값 비교
+console.log(req,JSON.stringify(req));
+
+fetch("/login",{
+    method: "POST",
+    header: {
+        "Content-Type":"application/json", //header를 통해 내가 전달하는 데이터가 json형태임을 알림
+    },
+    body: JSON.stringify(req),
+});
 }
-   
