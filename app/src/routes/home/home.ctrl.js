@@ -12,6 +12,9 @@ const output = {
     login : (req,res)=>{
         res.render("home/login"); //app.set("views","./views"); 가 있기 때문에 res.render("/views/home/login");안해줘도 된다.
     },
+    register: (req,res)=>{
+        res.render("home/register");
+    },
 };
 
 
