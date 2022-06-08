@@ -1,5 +1,8 @@
 "use strict";
 
+const { use } = require(".");
+const UserStorage = require("../../models/UserStorage");
+
 
 const output = {
     home : (req,res)=>{ 
@@ -10,33 +13,30 @@ const output = {
     },
 };
 
-//테스트로 쓸 데이터 아직 DB를 연결 안했기때문에 이걸로
-const users = {
-    id: ["woorimIT", "나개발", "김팀장"],
-    psword: ["1234","1234","123456"],
-};
 
 const process = {
     login: (req,res) => {
        
         const id = req.body.id,
         psword = req.body.psword;
+
+        
+        const users = UserStorage.getUsers("id","psword");
       
+        const response = {};
+
         if(users.id.includes(id)){
            
             const idx = users.id.indexOf(id);
             if(users.psword[idx]===psword){
-                
-                return res.json({
-                    success:true,
-                });
+                response.success = true;
+                return res.json(response);
             }
-        }    
+        }   
 
-        return res.json({
-            success:false,
-            msg: "로그인에 실패하셨습니다.",
-        });
+        response.success = false;
+        response.msg = "로그인에 실패하셨습니다.";
+        return res.json(response);
     },
 };
 module.exports = { 
