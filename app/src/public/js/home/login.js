@@ -23,5 +23,6 @@ fetch("/login",{
         "Content-Type":"application/json", //header를 통해 내가 전달하는 데이터가 json형태임을 알림
     },
     body: JSON.stringify(req),
-});
+    }).then((res)=>res.json())
+    .then(console.log);
 }
