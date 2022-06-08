@@ -10,7 +10,7 @@ loginBtn.addEventListener("click",login);
 function login(){
     const req ={
         id: id.value,
-        paword: psword.value,
+        psword: psword.value,
     };
     //console.log(req);
 console.log(req);
@@ -19,10 +19,18 @@ console.log(req,JSON.stringify(req));
 
 fetch("/login",{
     method: "POST",
-    header: {
+    headers: {
         "Content-Type":"application/json", //header를 통해 내가 전달하는 데이터가 json형태임을 알림
     },
-    body: JSON.stringify(req),
-    }).then((res)=>res.json())
-    .then(console.log);
+        body:JSON.stringify(req),
+    })
+    .then((res)=>res.json())
+    .then((res)=>{
+        if(res.success){
+            location.href = "/";
+        }
+        else{
+            alert(res.msg);
+        }
+    });
 }
