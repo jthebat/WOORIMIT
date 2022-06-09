@@ -1,7 +1,7 @@
 "use strict";
 const id = document.querySelector("#id"),
   psword = document.querySelector("#psword"),
-   loginBtn = document.querySelector("button");
+   loginBtn = document.querySelector("#button");
 
    //console.log(id); //null이나온다 ejs에서에서 console.log가 document에서 id를 가져오기도 전에 실행되기 떄문에 ejs defer라는 옵션을 통해 해결 async wait와 관련있는 듯 찾아볼것
 
